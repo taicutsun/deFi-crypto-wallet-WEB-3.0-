@@ -1,0 +1,81 @@
+:root {
+  --wrap-bg-color: linear-gradient(rgba(35, 43, 85, 0.75),
+      rgba(35, 43, 85, 0.95));
+  --main-txt-color: rgba(255, 255, 255, 0.7);
+}
+
+* {
+  font-family: "Open Sans", sans-serif;
+}
+/*
+body {
+  background-color: #324b79;
+}*/
+
+input {
+  width: 80%;
+  padding-left: 15px;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+label {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding-left: 12px;
+  color: var(--main-txt-color);
+  display: block;
+}
+
+.Link {
+  text-decoration: none;
+  color: black;
+}
+
+.greating {
+  text-align: center;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.loginBtn {
+  float: left;
+  width: 80%;
+  border: none;
+  border-radius: 20px;
+  margin-top: -5px;
+  margin-bottom: 15px;
+  background: rgba(180, 180, 180, 0.2);
+}
+
+.homeBtn {
+  display: block;
+  height: 3em;
+  width: 20%;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  background: rgba(180, 180, 180, 0.2);
+}
+
+.backBtn {
+  float: left;
+  width: 40%;
+  border: none;
+  border-radius: 20px;
+  background: rgba(180, 180, 180, 0.2);
+}
+
+.errorMass {
+  margin-bottom: 4px;
+  color: red;
+  padding-left: 10px;
+  float: left;
+}
+
+.deleteProduct{
+  margin-left:10px;
+}

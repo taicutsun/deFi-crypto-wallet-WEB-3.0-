@@ -1,0 +1,25 @@
+#menu {
+    margin-top: 8px;
+}
+
+#createWrap {
+  height: 21em;
+  width: 25%;
+  background: var(--wrap-bg-color);
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  padding-left: 4px;
+}
+
+.dish{
+  display: inline-block;
+  text-align: center;
+  margin-top: 15px;
+  margin-right: 25px;
+  margin-bottom:15px ;
+  }
+  

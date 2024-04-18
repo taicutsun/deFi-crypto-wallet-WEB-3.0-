@@ -1,0 +1,12 @@
+#mainWrap {
+    height: 15em;
+    width: 20%;
+    background: var(--wrap-bg-color);
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    padding-left: 4px;
+}

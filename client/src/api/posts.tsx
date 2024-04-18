@@ -26,7 +26,6 @@ export const axLogin = async (user: string, pass: string) => {
 //for loginPage
 
 //for userPage
-export let success: boolean = true;
 export async function sendAccToken() {
   axios
     .post(
@@ -40,17 +39,13 @@ export async function sendAccToken() {
     )
     .then((res) => {
       console.log("sended acc");
-      success = res.data.success;
     })
     .catch((err) => {
-      if (err.response) {
-        console.log("error in acctoken");
-        window.location.href  = "http://localhost:3000/";
-      } else if (err.request) {
-        console.log("req");
-      } else {
-        console.log("me");
-      }
+      if (err.response) console.log("error in acctoken");
+      else if (err.request) console.log("req");
+      else console.log("me AcT");
+      
+      window.location.href  = "http://localhost:3000/";
     });
 }
 
@@ -68,14 +63,11 @@ export async function sendRefToken() {
       tokens.accessToken = res.data.accessToken;
     })
     .catch((err) => {
-      if (err.response) {
-        console.log("error in reftoken");
-        window.location.href  = "http://localhost:3000/";
-      } else if (err.request) {
-        console.log("req");
-      } else {
-        console.log("me");
-      }
+      if (err.response) console.log("error in reftoken");
+      else if (err.request) console.log("req refT");
+      else console.log("me refT");
+      
+      window.location.href  = "http://localhost:3000/";
     });
 }
 
@@ -95,19 +87,16 @@ export function axSendCreate(newuser: string, newpass: string): void {
       console.log(res.data);
     })
     .catch((err) => {
-      if (err.response) {
-        console.log("why");
-      } else if (err.request) {
-        console.log("req");
-      } else {
-        console.log("me");
-      }
+      if (err.response) console.log("error in create");
+      else if (err.request) console.log("req create");
+      else console.log("me create");
+      
+      window.location.href  = "http://localhost:3000/";
     });
 }
 
 //for bC func
 export function axGetBalance(cryptoI: number): void {
-
   axios
     .post(`http://localhost:3001/create`, {
       cryptoI: cryptoI,
@@ -117,12 +106,10 @@ export function axGetBalance(cryptoI: number): void {
       console.log(res.data);
     })
     .catch((err) => {
-      if (err.response) {
-        console.log("why");
-      } else if (err.request) {
-        console.log("req");
-      } else {
-        console.log("me");
-      }
+      if (err.response) console.log("error in bal");
+      else if (err.request) console.log("req bal");
+      else console.log("me bal");
+      
+      window.location.href  = "http://localhost:3000/";
     });
 }

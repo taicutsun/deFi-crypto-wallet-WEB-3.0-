@@ -14,7 +14,7 @@ import {
   selectUserIndex,
 } from "../../app/appSlice"; //jwt and else pt1
 //redux imports
-import { sendAccToken, sendRefToken, success } from "../../api/posts";
+import { sendAccToken, sendRefToken } from "../../api/posts";
 import { NavBar } from "../nav/NavBar";
 
 export let interval:any; //для остановки цикла когда пользователь выйдет из акк
@@ -99,7 +99,7 @@ function Create() {
   };
 
   useEffect(() => {
-    if (click>1 && newuser !== "" && newpass === secpass && newpass !== "" && alrdCreate !==true && donExist !==true) {//have to rework click>1(not smart solution)
+    if ( newuser !== "" && newpass === secpass && newpass !== "" && alrdCreate !==true && donExist !==true) {//have to rework click>1(not smart solution)
       console.log(user);
       setStatus(true);
     }

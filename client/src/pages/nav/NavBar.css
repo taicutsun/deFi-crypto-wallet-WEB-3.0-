@@ -69,6 +69,7 @@ li:last-child {
 .link {
   color: #fff;
   text-decoration: none;
+  margin-bottom: 20px;
   padding: 10px;
   transition: all 0.7s ease;
 }

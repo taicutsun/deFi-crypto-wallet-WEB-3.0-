@@ -9,6 +9,7 @@ export interface CheckUserPass {
   secPass: string
 }
 
+
 export interface UserState {
   username: string,
   password: string,
@@ -44,14 +45,10 @@ export const appSlice = createSlice({
       if (state.password === action.payload.secPass && state.password !== "") axSendCreate(state.username, state.password);
       
     },
-    TopUp(state, action: PayloadAction<number>) {
-     // if(action.payload > 0) state.balance += action.payload;
-      
-    },
   },
 });
 
-export const { setUser, createUser, TopUp } = appSlice.actions;
+export const { setUser, createUser } = appSlice.actions;
 
 export const selectLog = (state: RootState) => state.app;//if logged
 export const selectUserName = (state: RootState) => state.app.username;//users name

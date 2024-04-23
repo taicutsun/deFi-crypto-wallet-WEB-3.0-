@@ -4,8 +4,8 @@ import { UserPage, Create } from "./pages/user/User";
 import { LoginPage } from "./pages/log/Log";
 import { Home } from "./pages/home/Home";
 import { Routes, Route } from "react-router-dom";
-import { Balance } from "./pages/balance/Balance";
-import { BuyMenu } from "./pages/buy/BuyMenu";
+import { SendMoney } from "./pages/sendMoney/SendMoney";
+
 
 
 
@@ -19,8 +19,7 @@ function App() {//change or think ab routes of buy
 
         <Route path="user">
           <Route index element={<UserPage />} />
-          <Route path="buy" element={<BuyMenu />} />
-          <Route path="balance" element={<Balance />} />
+          <Route path="sendMoney" element={<SendMoney />} />
         </Route>
 
       </Routes>

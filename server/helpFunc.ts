@@ -12,7 +12,7 @@ function authenticateToken(req: any, res: any, next: any) {
 
   jwt.verify(token, process.env.ACCSESS_TOKEN_SECRET, (err: any) => {
     if (err) {
-      console.log(err);
+      console.log(`err in verification acT`);
       return res.sendStatus(403);
     }
     //req.user = loginuser;
@@ -49,17 +49,11 @@ async function sendEther(cryptoI:number, _to: string, amountInEther: string):Pro
     .connect(signer)
     .forwardEther(_to, { value: amountInWei });
   
-/*
-    const tx = await signer.sendTransaction({
-      to: _to,
-      value: amountInWei,
-    });*/
-  await tx.wait(); //mining
  
+  await tx.wait(); //mining
+
   const bal:number = await server.provider.getBalance(_to);
-  console.log(
-    `Ether forwarded successfully in transaction: ${tx.hash},user balance = ${bal}`
-  );
+  console.log( `Ether forwarded successfully in transaction: ${tx.hash},user who was sent balance = ${bal}`);
 }
  
 //for bc

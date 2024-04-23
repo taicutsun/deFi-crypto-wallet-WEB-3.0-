@@ -25,8 +25,8 @@ export const NavBar = () => {
             <li>
             </li>
             <li>
-              <Link className="link" to="/user/balance">
-                Пополнить баланс
+              <Link className="link" to="/user/sendMoney">
+               Перевод средств
               </Link>
             </li>
             <li>

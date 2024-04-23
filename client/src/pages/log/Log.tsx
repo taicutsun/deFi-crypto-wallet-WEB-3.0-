@@ -16,7 +16,6 @@ interface ErrMassProps {
 
 function LogMass(props: ErrMassProps) {
   const log = useAppSelector(selectLog);
-  console.log(props.cl);
   if (log.logged === 'failed' && props.cl >= 1) {
     return (
       <>
@@ -26,7 +25,7 @@ function LogMass(props: ErrMassProps) {
   } else return <></>;
 }
 
-let authStatus: boolean; //=res.data.status
+
 export function LoginPage() {
   const [user, setUsername] = useState('');
   const [pass, setPass] = useState('');

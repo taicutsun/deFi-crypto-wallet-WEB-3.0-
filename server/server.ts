@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 //for blockchain INIT
 const LockArtifact = require('../blockchain/artifacts/contracts/Lock.sol/Lock.json');
 const contractAddressArtifact = require('../blockchain/ignition/deployments/chain-31337/deployed_addresses.json');
- 
+
 const abi: any[] = LockArtifact.abi;
 const contractAddress: string = contractAddressArtifact['LockModule#Lock'];
 const provider = new JsonRpcProvider('http://127.0.0.1:8545');
@@ -54,9 +54,10 @@ let indexOfUser: number = 1;
 app.post('/create', (req: any, res: any) => {
   const { username, password, verOfCreate } = req.body;
   user = users.find((u) => u.username == username);
+  console.log(`verofcreate=${verOfCreate}`);
+  if (!verOfCreate) {
+    if (user != undefined) res.send({ mass: 'user already created', alrdCreate: true });
 
-  if (user != undefined) res.send({ mass: 'user already created', alrdCreate: true });
-  else if (!verOfCreate) {
     users.push({
       username: username,
       password: password,
@@ -105,14 +106,13 @@ app.post('/login', async (req: any, res: any) => {
     });
   } else res.json({ mass: 'Username or password incorrect', status: false });
 });
- 
+
 //обработка аксестокена
 app.post('/posts', helpFuncs.authenticateToken, (req: any, res: any) => {
   res.json({ success: true });
 });
- 
-//создание токенов
 
+//создание токенов
 app.post('/token', (req: any, res: any) => {
   const refreshToken = req.body.token;
 
@@ -126,44 +126,31 @@ app.post('/token', (req: any, res: any) => {
     res.json({ accessToken: accessToken });
   });
 });
-  
-//for JWT   
 
-//blockchain 
+//for JWT
+
+//blockchain
 app.get('/getPublicAddress', async (req: any, res: any) => {
   const signers = await provider.listAccounts();
-  const addresses = signers.map((signer:any) => signer.address);
-    
+  const addresses = signers.map((signer: any) => signer.address);
+
   res.json({ status: true, addresses: addresses });
 });
- 
+
 app.post('/sendMoney', async (req: any, res: any) => {
   const { cryptoI, _to, amountEther } = req.body;
 
   helpFuncs
     .sendEther(cryptoI, _to, amountEther)
-    .then( () => res.json({msg:"ether was successfully sent", success: true }) )
-    .catch( (error: any) =>{
-      try{
-      res.json({ msg: error.revert.args[0] });
-      }
-      catch (err:any){
-        res.json({ msg: "signers address is invalid" });
+    .then(() => res.json({ msg: 'ether was successfully sent', success: true }))
+    .catch((error: any) => {
+      //console.log(error.error.message);
+      //console.log(error.revert.args);
 
-      }
-     });
+      if (error?.revert?.args != undefined) res.json({ msg: error.revert.args[0] });
+      else res.json({ msg: error.error.message });
+    });
 });
-  
-/*
-app.post('/getBalance', async (req: any, res: any) => {
-  const { index } = req.body; 
-  console.log(`index = ${index}`);
-
-  const balance:number = await helpFuncs.getBalance(index);
-
-  res.json({ balance: balance });
-});
-*/
 
 app.listen(3001);
 

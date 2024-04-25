@@ -140,7 +140,7 @@ export function SendMoney() {
           />
         </form>
 
-        {checkForInput ? (
+        {checkForInput && address !='' ? (
           <button onClick={() => setClick(click + 1)}>отправить ефир</button>
         ) : (
           'неправильный ввод количества или адресса    '

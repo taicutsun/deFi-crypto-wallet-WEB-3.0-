@@ -28,7 +28,7 @@ const contractAddress: string = contractAddressArtifact['LockModule#Lock'];
 const provider = new JsonRpcProvider('http://127.0.0.1:8545');
 
 const owner: any = new ethers.Wallet(
-  '0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80',
+  process.env.OWNER_KEY,
   provider,
 );
 
@@ -55,6 +55,7 @@ app.post('/create', (req: any, res: any) => {
   const { username, password, verOfCreate } = req.body;
   user = users.find((u) => u.username == username);
   console.log(`verofcreate=${verOfCreate}`);
+
   if (!verOfCreate) {
     if (user != undefined) res.send({ mass: 'user already created', alrdCreate: true });
 

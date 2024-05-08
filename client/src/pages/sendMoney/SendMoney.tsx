@@ -55,39 +55,29 @@ export function SendMoney() {
     else setcheckForInput(false);
 
     if (click > 0) {
+      axios
+        .post('http://localhost:3001/sendMoney', {
+          cryptoI: cryptoI,
+          _to: address,
+          amountEther: amount.toString(),
+        })
+        .then((res: any) => {
+          console.log(res.data);
 
-      axios.post('http://localhost:3001/sendMoney', {
-      cryptoI: cryptoI,
-      _to: address,
-      amountEther: amount.toString()
-    })
-    .then((res:any) => {
-      console.log(res.data);
+          if (res.data.succses) setSuccses(true);
 
-        if (res.data.succses) setSuccses(true);
+          setMsg(res.data.msg);
+          setClick(0);
+        })
+        .catch((err) => {
+          if (err.response) console.log('error in sendmoney');
+          else if (err.request) console.log('req sendmoney');
+          else console.log('me sendmoney');
 
-        setMsg(res.data.msg);
-        setClick(0);
-        
-    })
-    .catch((err) => {
-      if (err.response) console.log('error in sendmoney');
-      else if (err.request) console.log('req sendmoney');
-      else console.log('me sendmoney');
-
-      window.location.href = 'http://localhost:3000/';
-    });
-    /*
-      axSendMoney(cryptoI, address, amount.toString()).then((res: any) => {
-        console.log(res);
-
-        if (res.succses) setSuccses(true);
-
-        setMsg(res.msg);
-      });
-      */
+          window.location.href = 'http://localhost:3000/';
+        });
     }
-  }, [amount,address,click]);
+  }, [amount, address, click]);
 
   if (succses) {
     return (
@@ -104,52 +94,39 @@ export function SendMoney() {
           перевод средств <NavBar />{' '}
         </h1>
 
-        <div>ваш баланс {balance}ETH</div>
+        <div className="container">
+    <div className="left-panel">
+        <div className="balance">ваш баланс {balance} ETH</div>
         <form>
-          <label style={{ color: 'black', display: 'block', margin: '10px 0' }}>количество</label>
-          <input
-            type="text"
-            name="amount"
-            min="0"
-            pattern="[0-9]*"
-            onChange={(e) => setAmount(parseFloat(e.target.value))}
-            style={{
-              display: 'block',
-              width: '200px',
-              padding: '8px',
-              margin: '10px 0',
-              borderColor: 'grey',
-              borderWidth: '1px',
-              backgroundColor: '#e0e0e0',
-            }}
-          />
-          <label style={{ color: 'black', display: 'block', margin: '10px 0' }}>адресс</label>
-          <input
-            type="text"
-            name="address"
-            onChange={(e) => setAddress(e.target.value)}
-            style={{
-              display: 'block',
-              width: '200px',
-              padding: '8px',
-              margin: '10px 0',
-              borderColor: 'grey',
-              borderWidth: '1px',
-              backgroundColor: '#e0e0e0',
-            }}
-          />
+            <label className="form-label">количество</label>
+            <input
+                type="text"
+                name="amount"
+                className="form-input"
+                min="0"
+                pattern="[0-9]*"
+                onChange={(e) => setAmount(parseFloat(e.target.value))}
+            />
+            <label className="form-label">адресс</label>
+            <input
+                type="text"
+                name="address"
+                className="form-input"
+                onChange={(e) => setAddress(e.target.value)}
+            />
+            {checkForInput && address !== '' ? (
+                <button className="send-button" onClick={() => setClick(click + 1)}>отправить ефир</button>
+            ) : (
+                <div className="error-message">неправильный ввод количества или адресса</div>
+            )}
         </form>
+    </div>
+    <div className="right-panel">
+        <div>{msg}</div>
+        <div>public keys: <Publickeys /></div>
+    </div>
+</div>
 
-        {checkForInput && address !='' ? (
-          <button onClick={() => setClick(click + 1)}>отправить ефир</button>
-        ) : (
-          'неправильный ввод количества или адресса    '
-        )}
-
-        <div>
-          <div>{msg}</div>
-          public keys: <Publickeys />
-        </div>
       </>
     );
   }

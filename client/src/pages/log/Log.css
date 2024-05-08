@@ -1,12 +1,63 @@
 #mainWrap {
-    height: 15em;
-    width: 20%;
-    background: var(--wrap-bg-color);
-    border-radius: 5px;
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    align-content: center;
     justify-content: center;
-    padding-left: 4px;
+    padding: 20px;
+    background: #1E2A47; /* Even darker blue background */
+    color: white;
+    font-family: 'Arial', sans-serif;
+    width: 300px; /* Adjust width as needed */
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Soft shadow for depth */
+}
+
+.greeting {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 15px; /* Increased radius for rounder input fields */
+    background: #f3f3f3; /* Light grey background for better visibility */
+    color: #333; /* Dark color for text */
+}
+
+.loginBtn, .backBtn {
+    background-color: #365A8C; /* Lighter blue for the buttons */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 15px; /* Consistent rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    justify-content: center;
+    width: 100%; /* Full width for visual consistency */
+}
+
+.loginBtn:hover, .backBtn:hover {
+    background-color: #2B4F81; /* Darker blue when hovered */
+}
+
+.Link {
+    text-decoration: none;
+    color: inherit; /* Inherits the color from the button */
+    display: block; /* Ensures the link fills the button for easier clicking */
 }

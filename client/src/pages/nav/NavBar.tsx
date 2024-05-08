@@ -23,8 +23,6 @@ export const NavBar = () => {
               </Link>
             </li>
             <li>
-            </li>
-            <li>
               <Link className="link" to="/user/sendMoney">
                Перевод средств
               </Link>

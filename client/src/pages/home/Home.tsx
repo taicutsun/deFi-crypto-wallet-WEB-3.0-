@@ -12,22 +12,23 @@ export function Home() {
 
     return (
         <div id="homeWrap">
-            <main>
-                <h2>Добро пожаловать на начальную страницу!</h2>
-            </main>
-            <nav>
-                <button className="homeBtn">
-                    <Link className="Link" to="/login">
-                        Войти
-                    </Link>
-                </button>
-                <button className="homeBtn">
-                    <Link className="Link" to="/create">
-                        Создать пользователя
-                    </Link>
-                </button>
-            </nav>
-        </div>
+        <main>
+            <h2>Добро пожаловать на начальную страницу!</h2>
+        </main>
+        <nav>
+            <button className="homeBtn">
+                <Link className="Link" to="/login">
+                    Войти
+                </Link>
+            </button>
+            <button className="homeBtn">
+                <Link className="Link" to="/create">
+                    Создать пользователя
+                </Link>
+            </button>
+        </nav>
+    </div>
+    
     );
 }
 

@@ -52,7 +52,7 @@ export const { setUser, createUser } = appSlice.actions;
 
 export const selectLog = (state: RootState) => state.app;//if logged
 export const selectUserName = (state: RootState) => state.app.username;//users name
-export const selectUserPass = (state: RootState) => state.app.password;//users password
+//export const selectUserPass = (state: RootState) => state.app.password;//users password
 export const selectUserBalance = (state: RootState) => state.app.balance;//users password
 export const selectUserIndex = (state: RootState) => state.app.cryptoI;//users balance
 

@@ -1,25 +1,101 @@
-#menu {
-    margin-top: 8px;
-}
-
 #createWrap {
-  height: 21em;
-  width: 25%;
-  background: var(--wrap-bg-color);
-  border-radius: 10px;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  align-content: center;
   justify-content: center;
-  padding-left: 4px;
+  padding: 20px;
+  background: #1E2A47;  /* Consistent dark blue background */
+  color: white;
+  font-family: 'Arial', sans-serif;
+  width: 300px; /* Adjust width as needed */
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* Soft shadow for depth */
 }
 
-.dish{
-  display: inline-block;
+div{
+  color:white;
+}
+
+.greeting, .errorMass {
+  font-size: 16px;
   text-align: center;
-  margin-top: 15px;
-  margin-right: 25px;
-  margin-bottom:15px ;
-  }
-  
+  margin-bottom: 20px;
+}
+
+.Link {
+  text-decoration: none;
+  color: inherit; /* Inherits the color from the button */
+  display: block; /* Ensures the link fills the button for easier clicking */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 8px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 15px; /* Rounded inputs */
+  background: #f3f3f3;
+  color: #333;
+}
+
+.loginBtn, .backBtn {
+  background-color: #365A8C;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  outline: none;
+}
+
+.loginBtn:hover, .backBtn:hover {
+  background-color: #2B4F81;
+}
+
+.Link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.liU {
+  width: 15%;
+  padding: 8px 12px; /* Reduced padding for a smaller button-like feel */
+  margin: 5px; /* Uniform margin for a neat layout */
+  margin-bottom: 5px;
+  border: none;
+  border-radius: 20px; /* Increased border-radius for a more rounded look */
+  background-color: #365A8C; /* Initial background color */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transitions for hover effects */
+  display: flex; /* Ensures the link inside stretches fully */
+  align-items: center; /* Vertically centers the text inside the button */
+  justify-content: center; /* Horizontally centers the text inside the button */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Adding a subtle shadow for depth */
+}
+
+li:hover {
+  background-color: #2B4F81; /* Darker shade on hover */
+  transform: scale(1.05); /* Slightly scale up on hover for effect */
+}
+
+.link {
+  text-decoration: none; /* Remove underline from links */
+  color: white; /* White text for visibility */
+  width: 100%; /* Ensures the link fills the button for clickable area */
+}

@@ -42,14 +42,25 @@ function UserPage() {
   }, []);
 
   return (
-    <>
-      <header>
+    <div>
+    <header>
         <h1>
-          {' '}
-          Здраствуйте {username},ваш баланс {balance}ETH <NavBar />{' '}
+            Здравствуйте {username}, ваш баланс {balance} ETH
+            <NavBar />
         </h1>
-      </header>
-    </>
+    </header>
+    <ul> 
+        <li className='liU'>
+            <Link className="link" to="/user">Главная</Link>
+        </li>
+        <li className='liU'>
+            <Link className="link" to="/user/sendMoney">Перевод средств</Link>
+        </li>
+        <li className='liU'>
+            <Link className="link" to="/">Выйти</Link>
+        </li>
+    </ul>
+</div>
   );
 }
 //for logged user
@@ -158,7 +169,7 @@ function Create() {
           </div>
           <div>
             <button className="backBtn">
-              <Link to="/">Назад</Link>
+              <Link className="Link" to="/">Назад</Link>
             </button>
           </div>
         </div>

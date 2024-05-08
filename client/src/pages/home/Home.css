@@ -1,4 +1,51 @@
+html {
+  overflow-y: hidden;
+}
+
+body{
+  background: #1E2A47; /* Even darker blue background */
+}
+
 #homeWrap {
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full viewport height */
+  font-family: 'Arial', sans-serif;
+  background: #1E2A47; /* Even darker blue background */
+  color: #fff; /* Sets text color to white for contrast */
+}
+
+main h2 {
+  margin-bottom: 20px; /* Adds spacing between the headline and buttons */
+}
+
+nav {
+  display: flex;
+  flex-direction: column; /* Buttons are stacked vertically */
+  align-items: center; /* Centers buttons in the navigation vertically */
+}
+
+.homeBtn {
+  background-color: #365A8C; /* A slightly lighter blue for the buttons */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px 0; /* Vertical margin for spacing, no horizontal margin */
+  border-radius: 20px; /* More rounded corners for a softer look */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth transition for the hover effect */
+  width: 100%; /* Ensures buttons expand to full width of the parent element */
+  display: flex; /* Enables flexbox for content alignment */
+  justify-content: center; /* Centers the text horizontally */
+}
+
+.homeBtn:hover {
+  background-color: #2B4F81; /* A darker blue when hovered */
+}
+
+.Link {
+  text-decoration: none; /* No underline for the links */
+  color: inherit; /* Inherits the color from the parent element (button) */
 }

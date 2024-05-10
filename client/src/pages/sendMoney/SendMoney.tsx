@@ -64,8 +64,6 @@ export function SendMoney() {
         .then((res: any) => {
           console.log(res.data);
 
-          if (res.data.succses) setSuccses(true);
-
           setMsg(res.data.msg);
           setClick(0);
         })
@@ -74,60 +72,54 @@ export function SendMoney() {
           else if (err.request) console.log('req sendmoney');
           else console.log('me sendmoney');
 
-          window.location.href = 'http://localhost:3000/';
+          // window.location.href = 'http://localhost:3000/';
         });
     }
   }, [amount, address, click]);
 
-  if (succses) {
-    return (
-      <div>
-        <h1>
-          перевод средств <NavBar />{' '}
-        </h1>
-      </div>
-    );
-  } else {
-    return (
-      <>
-        <h1>
-          перевод средств <NavBar />{' '}
-        </h1>
+  return (
+    <>
+      <h1>
+        перевод средств <NavBar />{' '}
+      </h1>
 
-        <div className="container">
-    <div className="left-panel">
-        <div className="balance">ваш баланс {balance} ETH</div>
-        <form>
+      <div className="container">
+        <div className="left-panel">
+          <div className="balance">ваш баланс {balance} ETH</div>
+          <form>
             <label className="form-label">количество</label>
             <input
-                type="text"
-                name="amount"
-                className="form-input"
-                min="0"
-                pattern="[0-9]*"
-                onChange={(e) => setAmount(parseFloat(e.target.value))}
+              type="text"
+              name="amount"
+              className="form-input"
+              min="0"
+              pattern="[0-9]*"
+              onChange={(e) => setAmount(parseFloat(e.target.value))}
             />
             <label className="form-label">адресс</label>
             <input
-                type="text"
-                name="address"
-                className="form-input"
-                onChange={(e) => setAddress(e.target.value)}
+              type="text"
+              name="address"
+              className="form-input"
+              onChange={(e) => setAddress(e.target.value)}
             />
             {checkForInput && address !== '' ? (
-                <button className="send-button" onClick={() => setClick(click + 1)}>отправить ефир</button>
+              <button className="send-button" onClick={(e) =>{e.preventDefault(); setClick(click + 1);}}>
+                отправить ефир
+              </button>
             ) : (
-                <div className="error-message">неправильный ввод количества или адресса</div>
+              <div className="error-message">неправильный ввод количества или адресса</div>
             )}
-        </form>
-    </div>
-    <div className="right-panel">
-        <div>{msg}</div>
-        <div>public keys: <Publickeys /></div>
-    </div>
-</div>
-
-      </>
-    );
-  }
+            <div>{msg}</div>
+          </form>
+        </div>
+        <div className="right-panel">
+          
+          <div>
+            public keys: <Publickeys />
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }

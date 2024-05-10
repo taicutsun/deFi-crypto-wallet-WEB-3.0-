@@ -145,14 +145,14 @@ app.post('/sendMoney', async (req: any, res: any) => {
     .sendEther(cryptoI, _to, amountEther)
     .then(() => res.json({ msg: 'ether was successfully sent', success: true }))
     .catch((error: any) => {
-      //console.log(error.error.message);
-      //console.log(error.revert.args);
+     console.log(error);
+      if (error?.reason != undefined) res.json({ msg: error.reason });
+      else if(error?.error?.message != undefined) res.json({msg:error.error.message});
+      else res.json({msg:error.shortMessage});
 
-      if (error?.revert?.args != undefined) res.json({ msg: error.revert.args[0] });
-      else res.json({ msg: error.error.message });
     });
 });
-
+ 
 app.listen(3001);
 
 export { provider, contract };

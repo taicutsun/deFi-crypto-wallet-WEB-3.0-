@@ -16,7 +16,7 @@ contract Lock {
     constructor() payable {
         owner = payable(msg.sender);
     }
-
+    
     // Function to forward Ether sent to this contract to another address
     function forwardEther(address payable _to) external payable {
         require(msg.sender != _to, "Cant transfer ether to yourself");

@@ -1,39 +1,43 @@
 html {
-overflow-y: hidden;
-overflow-x: hidden;
-}
-
-
-.container {
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+  
+  .container {
     display: flex;
     justify-content: space-between;
     width: 100%;
     padding: 20px;
-}
-
-.left-panel, .right-panel {
+  }
+  
+  .left-panel, .right-panel {
     flex: 1;
     margin: 10px;
-}
-
-.balance {
+  }
+  
+  .balance {
     font-size: 16px;
     color: #333;
     margin-bottom: 10px;
     font-weight: bold;
-    color:white;
-}
-
-.form-label {
+    color: white;
+  }
+  
+  .form-label {
     display: block;
     margin-bottom: 10px;
-}
-
-.form-input {
+  }
+  
+ .form-select { /* Apply same styles to select */
     display: block;
-}
-
-.send-button {
+    width: 14%; /* Ensures the select element occupies the full container width */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc; /* Gives a subtle border around the input */
+  }
+  
+  .send-button {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
@@ -42,18 +46,19 @@ overflow-x: hidden;
     width: 82%;
     cursor: pointer;
     transition: background-color 0.3s;
-}
-
-.send-button:hover {
+  }
+  
+  .send-button:hover {
     background-color: #367B48;
-}
-
-.error-message {
+  }
+  
+  .error-message {
     color: red;
     margin: 10px 0;
-}
-
-.right-panel {
+  }
+  
+  .right-panel {
     border-left: 2px solid #ddd; /* Optional: adds a visual separator */
     padding-left: 20px; /* Spacing from the border */
-}
+  }
+  

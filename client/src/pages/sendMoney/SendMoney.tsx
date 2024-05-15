@@ -43,9 +43,14 @@ export function SendMoney() {
   const [address, setAddress] = useState('');
   const [amount, setAmount] = useState(0);
   const [checkForInput, setcheckForInput] = useState(false);
-  const [succses, setSuccses] = useState(false);
   const [click, setClick] = useState(0);
   const [msg, setMsg] = useState('');
+  const [cryptoType, setCryptoType] = useState('ETH'); // Default crypto type
+  const cryptoOptions = [
+    { id: 'ETH', name: 'Ethereum' },
+    { id: 'BTC', name: 'Bitcoin' },
+    { id: 'LTC', name: 'Litecoin' },
+  ];
 
   const balance: number = useAppSelector(selectUserBalance);
   const cryptoI: number = useAppSelector(selectUserIndex);
@@ -55,11 +60,16 @@ export function SendMoney() {
     else setcheckForInput(false);
 
     if (click > 0) {
+      let converted:number = amount;
+      
+      if (cryptoType === 'BTC') converted = amount * 21.72;
+      else if (cryptoType === 'LTC') converted = amount * 0.027;
+
       axios
         .post('http://localhost:3001/sendMoney', {
           cryptoI: cryptoI,
           _to: address,
-          amountEther: amount.toString(),
+          amountEther: converted.toString(),
         })
         .then((res: any) => {
           console.log(res.data);
@@ -72,7 +82,7 @@ export function SendMoney() {
           else if (err.request) console.log('req sendmoney');
           else console.log('me sendmoney');
 
-          // window.location.href = 'http://localhost:3000/';
+          window.location.href = 'http://localhost:3000/';
         });
     }
   }, [amount, address, click]);
@@ -87,6 +97,19 @@ export function SendMoney() {
         <div className="left-panel">
           <div className="balance">ваш баланс {balance} ETH</div>
           <form>
+            <label className="form-label">Выберите криптовалюту:</label>
+            <select
+              value={cryptoType}
+              onChange={(e) => setCryptoType(e.target.value)}
+              className="form-select"
+            >
+              {cryptoOptions.map((option) => (
+                <option key={option.id} value={option.id}>
+                  {option.name}
+                </option>
+              ))}
+            </select>
+
             <label className="form-label">количество</label>
             <input
               type="text"
@@ -104,7 +127,13 @@ export function SendMoney() {
               onChange={(e) => setAddress(e.target.value)}
             />
             {checkForInput && address !== '' ? (
-              <button className="send-button" onClick={(e) =>{e.preventDefault(); setClick(click + 1);}}>
+              <button
+                className="send-button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setClick(click + 1);
+                }}
+              >
                 отправить ефир
               </button>
             ) : (
@@ -114,7 +143,6 @@ export function SendMoney() {
           </form>
         </div>
         <div className="right-panel">
-          
           <div>
             public keys: <Publickeys />
           </div>

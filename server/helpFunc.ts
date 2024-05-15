@@ -39,9 +39,8 @@ async function getBalance(cryptoI:number):Promise<number> {
   //console.log("Signer's balance:", formated , "ETH");
   return formated;
 }
- 
+
 async function sendEther(cryptoI:number, _to: string, amountInEther: string):Promise<void> {
- 
   const amountInWei = ethers.parseEther(amountInEther);
   const signer = await server.provider.getSigner(cryptoI);
  //console.log(signer);

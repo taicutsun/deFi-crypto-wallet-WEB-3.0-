@@ -22,7 +22,6 @@ contract Lock {
         require(msg.sender != _to, "Cant transfer ether to yourself");
         require(msg.value > 0, "No Ether sent");
         
-       // _to.transfer(msg.value);
         bool success = _to.send(msg.value);
         require(success, "Transfer failed");
 

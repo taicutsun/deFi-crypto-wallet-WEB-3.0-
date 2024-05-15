@@ -131,5 +131,4 @@ export async function axSendMoney(cryptoI: number, _to: string, amountEther: str
     });
 
     return res.data;
- 
 }

@@ -45,10 +45,13 @@ export const appSlice = createSlice({
       if (state.password === action.payload.secPass && state.password !== "") axSendCreate(state.username, state.password);
       
     },
+    changeBal(state,action: PayloadAction<number>) {
+      state.balance -= action.payload;
+    },
   },
-});
+}); 
 
-export const { setUser, createUser } = appSlice.actions;
+export const { setUser, createUser,changeBal } = appSlice.actions;
 
 export const selectLog = (state: RootState) => state.app;//if logged
 export const selectUserName = (state: RootState) => state.app.username;//users name

@@ -12,7 +12,6 @@ contract Lock {
     event Withdrawal(uint amount, uint when);
     event EtherForwarded(address indexed from, address indexed to, uint amount);
 
-
     constructor() payable {
         owner = payable(msg.sender);
     }
@@ -21,7 +20,7 @@ contract Lock {
     function forwardEther(address payable _to) external payable {
         require(msg.sender != _to, "Cant transfer ether to yourself");
         require(msg.value > 0, "No Ether sent");
-        
+         
         bool success = _to.send(msg.value);
         require(success, "Transfer failed");
 

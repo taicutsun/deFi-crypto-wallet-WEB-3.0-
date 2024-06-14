@@ -3,8 +3,8 @@ import '../../App.css';
 import './SendMoney.css';
 import { useState, useEffect } from 'react';
 //redux imports
-import { useAppSelector } from '../../app/hooks';
-import { selectUserBalance, selectUserIndex } from '../../app/appSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { changeBal, selectUserBalance, selectUserIndex } from '../../app/appSlice';
 //redux imports
 import { NavBar } from '../nav/NavBar';
 import { axGetPublicKeys, axSendMoney } from '../../api/posts';
@@ -40,6 +40,8 @@ function Publickeys() {
 }
 
 export function SendMoney() {
+  const dispatch = useAppDispatch();
+
   const [address, setAddress] = useState('');
   const [amount, setAmount] = useState(0);
   const [checkForInput, setcheckForInput] = useState(false);
@@ -74,6 +76,7 @@ export function SendMoney() {
         .then((res: any) => {
           console.log(res.data);
 
+          dispatch(changeBal(converted));
           setMsg(res.data.msg);
           setClick(0);
         })
